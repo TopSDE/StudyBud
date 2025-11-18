@@ -18,4 +18,4 @@ admin.site.register(Topic)
 
 @admin.register(Message)
 class CustomMessageModel(admin.ModelAdmin):
-    
+    readonly_fields = ('created', 'updated')

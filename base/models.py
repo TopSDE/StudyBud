@@ -2,13 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 '''
-(models.Model) tells Django 
-“this class is a model, 
-map it to a database table, and give it ORM superpowers.”
+Object → Python objects (ex: Room, Topic, Message)
+Relational → Relational database (ex: MySQL, SQLite, PostgreSQL) --> Tables, columns, rows, IDs
+Mapper → Mapping between the two --> Converts Python ↔ SQL
 
-from django.some_module import SomeClassOrFunction
+"from django.some_module import SomeClassOrFunction"
 models → module/package (django.db.models).
 Model → class inside that module.
+
+makemigrations	-> Creates migration files (instructions).
+migrate -> Executes instructions → creates/updates tables in DB.
 '''
 class Topic(models.Model):
     name = models.CharField(max_length=200)
