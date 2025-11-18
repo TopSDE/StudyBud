@@ -13,6 +13,8 @@ def home(request):
     return render(request, 'base/home.html', {'rooms' : rooms})
     # return render(http://127.0.0.1:8000/, 'templates/base/home.html', rooms)
     # Together combined -> http://127.0.0.1:8000/templates/base/home.html
+    # Djago first looks for Project/Templates folder, and since 'APP_DIRS': True in
+    # settings.py, it then look for base/templates folder
 
 def room(request, pk):
     room = Room.objects.get(id = pk)
