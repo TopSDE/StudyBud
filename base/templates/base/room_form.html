@@ -1,11 +1,17 @@
+<!-- | Method   | Purpose                      | Visible in URL? | Safe for changes? |
+| -------- | ---------------------------- | --------------- | ----------------- |
+| **GET**  | Fetching data                | Yes             | No                |
+| **POST** | Sending data to make changes | No              | Yes               |
+action 👉 Send the form data to the same URL where the form is currently displayed. -->
+
 {% extends 'main.html' %}
 
 {% block content %}
 
 <div>
     <form method="POST" action = "">
-        {% csrf token %}
-
+        {% csrf_token %}
+        {{form.as_p}}
         <input type = "submit" value = "Submit" />
 
     </form>

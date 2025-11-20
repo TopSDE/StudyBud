@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Room
+from .forms import RoomForm
 
 # rooms = [
 #     {'id' : 1, 'name' : "Lets learn Python!"},
@@ -10,11 +11,12 @@ from .models import Room
 rooms = Room.objects.all()
 
 def home(request):
+    print("Rooms:", rooms)
     return render(request, 'base/home.html', {'rooms' : rooms})
     # return render(http://127.0.0.1:8000/, 'templates/base/home.html', rooms)
     # Together combined -> http://127.0.0.1:8000/templates/base/home.html
-    # Djago first looks for Project/Templates folder, and since 'APP_DIRS': True in
-    # settings.py, it then look for base/templates folder
+    # Djago first looks for Project(base)/Templates folder, and since 'APP_DIRS': True in
+    # settings.py, it then look for base/templates/base folder
 
 def room(request, pk):
     room = Room.objects.get(id = pk)
@@ -27,5 +29,13 @@ def room(request, pk):
     return render(request, 'base/room.html', context)
 
 def CreateRoom(request):
-    context = {}
+    form = RoomForm()
+
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homeURL')
+
+    context = {'form' : form}
     return render(request, 'base/room_form.html', context)
