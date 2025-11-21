@@ -4,6 +4,12 @@
 | **POST** | Sending data to make changes | No              | Yes               |
 action 👉 Send the form data to the same URL where the form is currently displayed. -->
 
+<!-- - action="" → sends the POST request to the current URL.
+- If you are on http://127.0.0.1:8000/create-room/, the POST goes to /create-room/.
+- Django does not use the full request URL including domain (http://127.0.0.1:8000/).
+- It only looks at the path part of the URL (create-room/) to match a route.
+- Once it finds create-room/, it calls the CreateRoom view. -->
+
 {% extends 'main.html' %}
 
 {% block content %}

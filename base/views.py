@@ -8,9 +8,9 @@ from .forms import RoomForm
 #     {'id' : 2, 'name' : "Design With Me"},
 #     {'id' : 3, 'name' : "Frontend Dev's"},
 # ]
-rooms = Room.objects.all()
 
 def home(request):
+    rooms = Room.objects.all()
     print("Rooms:", rooms)
     return render(request, 'base/home.html', {'rooms' : rooms})
     # return render(http://127.0.0.1:8000/, 'templates/base/home.html', rooms)

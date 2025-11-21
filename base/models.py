@@ -27,6 +27,10 @@ class Room(models.Model):
     updated = models.DateTimeField(auto_now=True) # Updates the timestamp every time the object is saved
     created = models.DateTimeField(auto_now_add=True) # Sets the timestamp once when the object is created
 
+    # Meta is not a form field or model field; it’s configuration.
+    class Meta:
+        ordering = ['-updated', '-created']
+
     def __str__(self):
         return self.name
     
