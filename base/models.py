@@ -10,6 +10,9 @@ Mapper → Mapping between the two --> Converts Python ↔ SQL
 models → module/package (django.db.models).
 Model → class inside that module.
 
+You cannot import a function from a class using "from Class import Func". 
+You can only import from modules or packages.
+
 makemigrations	-> Creates migration files (instructions).
 migrate -> Executes instructions → creates/updates tables in DB.
 '''
